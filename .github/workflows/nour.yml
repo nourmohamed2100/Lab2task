@@ -1,5 +1,5 @@
 
-name: Hello Worldd
+name: Hello World
 
 on:
   push:
@@ -7,8 +7,15 @@ on:
       - master
 
 jobs:
-  hello:
+  first-job:
     runs-on: ubuntu-latest
     steps:
-      - name: Print Hello World
-        run: echo "Hello World"
+      - name: First job
+        run: echo "Hello from job 1"
+
+  second-job:
+    runs-on: ubuntu-latest
+    needs: first-job
+    steps:
+      - name: Second job
+        run: echo "Hello from job 2"
